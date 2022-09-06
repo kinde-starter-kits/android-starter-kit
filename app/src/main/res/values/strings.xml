@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">KindeAuth</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_out">Sign out</string>
+    <string name="lets_start">Let\'s start\nauthenticating\nwith KindeAuth</string>
+    <string name="configure">Configure your app</string>
+    <string name="go_to_docs">Go to docs</string>
+    <string name="username">%1$s %2$s</string>
+    <string name="username_initials">%1$s%2$s</string>
+    <string name="woohoo">Woohoo!</string>
+    <string name="build_the_stuff">Your\nauthentication is\nall sorted.\nBuild the\nimportant stuff.</string>
+    <string name="next_steps">Next steps for you</string>
+    <string name="visit_help">Visit our <u>help center</u></string>
+    <string name="rights">© 2022 KindeAuth, Inc. All rights reserved</string>
+</resources>
