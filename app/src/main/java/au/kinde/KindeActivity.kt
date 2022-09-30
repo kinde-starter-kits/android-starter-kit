@@ -49,11 +49,11 @@ class KindeActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.b_sign_in).setOnClickListener {
             sdk.login()
-//            sdk.login(CLIENT_ID, GrantType.PKCE)
+//            sdk.login(GrantType.PKCE)
         }
         findViewById<View>(R.id.b_sign_up).setOnClickListener {
             sdk.register()
-//            sdk.register(CLIENT_ID, GrantType.PKCE)
+//            sdk.register(GrantType.PKCE)
         }
         findViewById<View>(R.id.b_sign_out).setOnClickListener {
             sdk.logout()
@@ -66,7 +66,7 @@ class KindeActivity : AppCompatActivity() {
                 loadingGroup.visibility = View.INVISIBLE
                 progress.visibility = View.VISIBLE
                 execute {
-                    sdk.getProfile()?.let {
+                    sdk.getUser()?.let {
                         Handler(Looper.getMainLooper()).post {
                             userName.text = getString(R.string.username, it.firstName, it.lastName)
                             userNameInitials.text = getString(
@@ -85,18 +85,18 @@ class KindeActivity : AppCompatActivity() {
                 loggedInState.visibility = View.GONE
                 loggedOutState.visibility = View.VISIBLE
             }
+
+            override fun onException(exception: Exception) {
+                Handler(Looper.getMainLooper()).post {
+                    Toast.makeText(this@KindeActivity, exception.message, Toast.LENGTH_LONG).show()
+                }
+            }
         })
     }
 
     private fun execute(function: () -> Unit) {
         Thread {
-            try {
-                function.invoke()
-            } catch (ex: Exception) {
-                Handler(Looper.getMainLooper()).post {
-                    Toast.makeText(this@KindeActivity, ex.message, Toast.LENGTH_LONG).show()
-                }
-            }
+            function.invoke()
         }.start()
     }
 

@@ -22,10 +22,6 @@
             android:name="au.kinde.clientId"
             android:value="reg@live" />
 
-        <meta-data
-            android:name="au.kinde.clientSecret"
-            android:value="NWACRQCdwVGcamUcaAGAYKYB578UQRtYoCikL1mB8m76US3CJxS" />
-
         <activity
             android:name=".KindeActivity"
             android:exported="true"
