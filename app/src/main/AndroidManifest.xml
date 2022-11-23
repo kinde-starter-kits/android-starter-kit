@@ -20,7 +20,7 @@
 
         <meta-data
             android:name="au.kinde.clientId"
-            android:value="reg@live" />
+            android:value="864edea6fbbd46a4b1786a7d636e0008" />
 
         <activity
             android:name=".KindeActivity"
