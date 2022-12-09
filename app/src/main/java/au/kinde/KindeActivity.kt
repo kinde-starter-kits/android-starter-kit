@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import au.kinde.sdk.KindeSDK
+import au.kinde.sdk.SDKListener
 
 
 /**
@@ -59,7 +60,7 @@ class KindeActivity : AppCompatActivity() {
             sdk.logout()
         }
 
-        sdk = KindeSDK(this, object : KindeSDK.SDKListener {
+        sdk = KindeSDK(this, object : SDKListener {
             override fun onNewToken(token: String) {
                 loggedInState.visibility = View.VISIBLE
                 loggedOutState.visibility = View.GONE
