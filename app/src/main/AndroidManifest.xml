@@ -16,11 +16,11 @@
 
         <meta-data
             android:name="au.kinde.domain"
-            android:value="qualitywolves.kinde.com" />
+            android:value="<Your Kinde business domain>" />
 
         <meta-data
             android:name="au.kinde.clientId"
-            android:value="864edea6fbbd46a4b1786a7d636e0008" />
+            android:value="<Your Kinde Application Client Id>" />
 
         <activity
             android:name=".KindeActivity"
