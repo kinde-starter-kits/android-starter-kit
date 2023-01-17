@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import au.kinde.sdk.GrantType
 import au.kinde.sdk.KindeSDK
 import au.kinde.sdk.SDKListener
 
@@ -49,31 +50,31 @@ class KindeActivity : AppCompatActivity() {
         }
 
         findViewById<View>(R.id.b_sign_in).setOnClickListener {
-            sdk.login()
-//            sdk.login(GrantType.PKCE)
+//            sdk.login()
+            sdk.login(GrantType.PKCE)
         }
         findViewById<View>(R.id.b_sign_up).setOnClickListener {
-            sdk.register()
-//            sdk.register(GrantType.PKCE)
+//            sdk.register()
+            sdk.register(GrantType.PKCE)
         }
         findViewById<View>(R.id.b_sign_out).setOnClickListener {
             sdk.logout()
         }
 
-        sdk = KindeSDK(this, object : SDKListener {
+        sdk = KindeSDK(activity = this, sdkListener = object : SDKListener {
             override fun onNewToken(token: String) {
                 loggedInState.visibility = View.VISIBLE
                 loggedOutState.visibility = View.GONE
                 loadingGroup.visibility = View.INVISIBLE
                 progress.visibility = View.VISIBLE
                 execute {
-                    sdk.getUser()?.let {
+                    sdk.getUserProfileV2()?.let {
                         Handler(Looper.getMainLooper()).post {
-                            userName.text = getString(R.string.username, it.firstName, it.lastName)
+                            userName.text = it.name
                             userNameInitials.text = getString(
                                 R.string.username_initials,
-                                it.firstName?.first(),
-                                it.lastName?.first()
+                                it.givenName?.first(),
+                                it.familyName?.first()
                             )
                             progress.visibility = View.GONE
                             loadingGroup.visibility = View.VISIBLE

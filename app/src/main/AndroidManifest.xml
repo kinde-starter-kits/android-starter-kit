@@ -22,6 +22,10 @@
             android:name="au.kinde.clientId"
             android:value="<Your Kinde Application Client Id>" />
 
+        <meta-data
+            android:name="au.kinde.audience"
+            android:value="<Your Kinde Audience>" />
+
         <activity
             android:name=".KindeActivity"
             android:exported="true"
