@@ -30,7 +30,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.kinde:android-sdk:0.0.2'
+    implementation 'com.kinde:android-sdk:1.2.0'
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'
