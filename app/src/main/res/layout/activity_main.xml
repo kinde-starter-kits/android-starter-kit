@@ -224,6 +224,7 @@
         android:id="@+id/gr_logged_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         app:constraint_referenced_ids="b_sign_in,b_sign_up,v_logged_out_card"
         tools:visibility="gone" />
 
@@ -231,6 +232,7 @@
         android:id="@+id/gr_logged_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:constraint_referenced_ids="tv_initials,ll_username,progress,v_logged_in_container"
         tools:visibility="visible" />
 
@@ -238,6 +240,7 @@
         android:id="@+id/gr_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:constraint_referenced_ids="tv_initials,ll_username" />
 
     <TextView

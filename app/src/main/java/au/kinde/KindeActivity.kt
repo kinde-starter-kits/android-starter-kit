@@ -67,29 +67,33 @@ class KindeActivity : AppCompatActivity() {
             logoutRedirect = "kinde.sdk://<your_kinde_host>/kinde_logoutcallback",
             sdkListener = object : SDKListener {
                 override fun onNewToken(token: String) {
-                    loggedInState.visibility = View.VISIBLE
-                    loggedOutState.visibility = View.GONE
-                    loadingGroup.visibility = View.INVISIBLE
-                    progress.visibility = View.VISIBLE
-                    execute {
-                        sdk.getUserProfileV2()?.let {
-                            Handler(Looper.getMainLooper()).post {
-                                userName.text = it.name
-                                userNameInitials.text = getString(
-                                    R.string.username_initials,
-                                    it.givenName?.first(),
-                                    it.familyName?.first()
-                                )
-                                progress.visibility = View.GONE
-                                loadingGroup.visibility = View.VISIBLE
+                    Handler(Looper.getMainLooper()).post {
+                        loggedInState.visibility = View.VISIBLE
+                        loggedOutState.visibility = View.GONE
+                        loadingGroup.visibility = View.INVISIBLE
+                        progress.visibility = View.VISIBLE
+                        execute {
+                            sdk.getUserProfileV2()?.let {
+                                Handler(Looper.getMainLooper()).post {
+                                    userName.text = it.name
+                                    userNameInitials.text = getString(
+                                        R.string.username_initials,
+                                        it.givenName?.first(),
+                                        it.familyName?.first()
+                                    )
+                                    progress.visibility = View.GONE
+                                    loadingGroup.visibility = View.VISIBLE
+                                }
                             }
                         }
                     }
                 }
 
                 override fun onLogout() {
-                    loggedInState.visibility = View.GONE
-                    loggedOutState.visibility = View.VISIBLE
+                    Handler(Looper.getMainLooper()).post {
+                        loggedInState.visibility = View.GONE
+                        loggedOutState.visibility = View.VISIBLE
+                    }
                 }
 
                 override fun onException(exception: Exception) {
